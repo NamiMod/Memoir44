@@ -9,6 +9,10 @@ public class Map {
     private Element[][] mapElement;
     private int[][] mapElement_valid;
     private int[][] mapNature;
+    private String[][] mapElementString;
+    private String[][] mapNatureString;
+    private Army allied = new Allied();
+    private Army axis = new Axis();
 
     /**
      * create new map
@@ -18,7 +22,11 @@ public class Map {
         mapElement_valid = new int[9][13];
         mapNature = new int[9][13];
         firstMapElement(allied, axis);
+        mapElementString = new String[9][13];
+        mapNatureString = new String[9][13];
         firstMapNature();
+        this.allied = allied;
+        this.axis = axis;
     }
 
     /**
@@ -96,6 +104,8 @@ public class Map {
         mapNature[7][3] = 2;
         mapNature[7][4] = 2;
         mapNature[7][8] = 2;
+        mapNature[2][0] = 7;
+        mapNature[8][11] = 8;
 
     }
 
@@ -116,6 +126,13 @@ public class Map {
     }
 
     /**
+     * @return elements location
+     */
+    public int[][] getMapElement_valid() {
+        return mapElement_valid;
+    }
+
+    /**
      * @param x  first location
      * @param y  first location
      * @param xx second location
@@ -131,4 +148,76 @@ public class Map {
         }
         return java.lang.Math.max(java.lang.Math.abs(x - xx), java.lang.Math.abs(y - yy));
     }
+
+    /**
+     * @return name of elements in map
+     */
+    public String[][] getMapElementString() {
+        return mapElementString;
+    }
+
+    /**
+     * Update map Element String
+     */
+    public void fillElementStringMap() {
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 13; j++) {
+                mapElementString[i][j] = "   ";
+            }
+        }
+
+        for (Element e :allied.getElements()){
+            if (e instanceof Soldier ){
+                mapElementString[e.getX()][e.getY()] = "YS"+mapElement[e.getX()][e.getY()].getCounter();
+            }
+            else if (e instanceof Tank){
+                mapElementString[e.getX()][e.getY()] = "YT"+mapElement[e.getX()][e.getY()].getCounter();
+            }
+            else if (e instanceof Artillery){
+                mapElementString[e.getX()][e.getY()] = "YA"+mapElement[e.getX()][e.getY()].getCounter();
+            }
+
+        }
+        for (Element e :axis.getElements()){
+            if (e instanceof Soldier ){
+                mapElementString[e.getX()][e.getY()] = "XS"+mapElement[e.getX()][e.getY()].getCounter();
+            }
+            else if (e instanceof Tank){
+                mapElementString[e.getX()][e.getY()] = "XT"+mapElement[e.getX()][e.getY()].getCounter();
+            }
+            else if (e instanceof Artillery){
+                mapElementString[e.getX()][e.getY()] = "XA"+mapElement[e.getX()][e.getY()].getCounter();
+            }
+
+        }
+    }
+    /**
+     * @return name of nature in map
+     */
+    public String[][] getMapNatureString() {
+        return mapNatureString;
+    }
+    /**
+     * Update map nature String
+     */
+    public void fillNatureStringMap() {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 13; j++) {
+                switch (mapNature[i][j]) {
+                    case 0 -> mapNatureString[i][j] = "No";
+                    case 1 -> mapNatureString[i][j] = "Hi";
+                    case 2 -> mapNatureString[i][j] = "Ju";
+                    case 3 -> mapNatureString[i][j] = "Ri";
+                    case 4 -> mapNatureString[i][j] = "Br";
+                    case 5 -> mapNatureString[i][j] = "Ci";
+                    case 6 -> mapNatureString[i][j] = "Ca";
+                    case 7 -> mapNatureString[i][j] = "XX";
+                    case 8 -> mapNatureString[i][j] = "YY";
+                    default -> mapNatureString[i][j] = "";
+                }
+            }
+        }
+    }
+
 }
