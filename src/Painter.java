@@ -15,7 +15,10 @@ public class Painter {
     public static final String CYAN_BOLD = "\033[1;36m";   // CYAN
     public static final String GREEN_BOLD_BRIGHT = "\033[1;92m"; // GREEN
 
-
+    /**
+     * Draw card
+     * @param p number of card
+     */
     public void drawCard(int p) {
 
         if (p == 1) {
@@ -86,11 +89,23 @@ public class Painter {
 
     }
 
+    /**
+     * draw 2 cards
+     * @param p first card number
+     * @param q second card number
+     */
     public void drawCard2(int p, int q) {
         drawCard(p);
         drawCard(q);
     }
 
+    /**
+     * draw 4 cards
+     * @param p first card number
+     * @param q second card number
+     * @param s third card number
+     * @param w fourth card number
+     */
     public void drawCard4(int p, int q, int s, int w) {
         drawCard(p);
         drawCard(q);
@@ -98,6 +113,10 @@ public class Painter {
         drawCard(w);
     }
 
+    /**
+     * draw winner card
+     * @param winner winner of game
+     */
     public void winnerAlert(String winner) {
         if (winner.equals("Allied")) {
             System.out.println(RED_BOLD + "---------------------");
@@ -127,6 +146,10 @@ public class Painter {
         }
     }
 
+    /**
+     * draw map of game
+     * @param m map
+     */
     public void drawMap(Map m) {
         m.fillElementStringMap();
         m.fillNatureStringMap();
