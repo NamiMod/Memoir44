@@ -29,6 +29,13 @@ public class Map {
         this.axis = axis;
     }
 
+
+    public void setMapNature(int[][] mapNature) {
+        this.mapNature = mapNature;
+        mapNature[2][0] = 7;
+        mapNature[8][11] = 8;
+    }
+
     /**
      * update map elements
      * @param allied Army
