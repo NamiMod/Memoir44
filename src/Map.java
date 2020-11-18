@@ -30,6 +30,16 @@ public class Map {
     }
 
     /**
+     * update map elements
+     * @param allied Army
+     * @param axis Army
+     */
+    public void updateMap(Army allied , Army axis){
+        this.allied = allied;
+        this.axis = axis;
+    }
+
+    /**
      * set elements of army in map
      */
     public void firstMapElement(Army allied, Army axis) {
@@ -58,6 +68,8 @@ public class Map {
      * 4 -> bridge
      * 5 -> city
      * 6 -> camp
+     * 7 -> XX
+     * 8 -> YY
      */
 
     /**
