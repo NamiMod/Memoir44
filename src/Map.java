@@ -171,7 +171,7 @@ public class Map {
     /**
      * Update map Element String
      */
-    public void fillElementStringMap() {
+    public void fillElementStringMap(Army allied , Army axis) {
 
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 13; j++) {

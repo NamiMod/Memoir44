@@ -150,8 +150,8 @@ public class Painter {
      * draw map of game
      * @param m map
      */
-    public void drawMap(Map m) {
-        m.fillElementStringMap();
+    public void drawMap(Map m , Army allied , Army axis) {
+        m.fillElementStringMap(allied , axis);
         m.fillNatureStringMap();
 
         // row 0
