@@ -92,6 +92,7 @@ public class Main {
 
             // end drawing part
 
+            boolean flag = false;
 
             if (turn % 2 == 1){
                 int c1 = card.getCard();
@@ -310,9 +311,10 @@ public class Main {
                 }else {
                     System.out.println("Wrong choice!");
                     turn  = turn - 1 ;
+                    flag = true;
                 }
             }
-            if (turn % 2 == 0){
+            if (turn % 2 == 0 && !flag){
                 int w1 = card.getCard();
                 int w2 = card.getCard();
                 painter.drawCard2(w1,w2);
