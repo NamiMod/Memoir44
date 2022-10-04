@@ -38,7 +38,7 @@ public class Card {
     public Card() {
         cards = new ArrayList<Integer>();
         cardsBackUp = new ArrayList<Integer>();
-        Dice dice = new Dice();
+        dice = new Dice();
         addCardsToBackUp();
         addCardsToList();
     }
